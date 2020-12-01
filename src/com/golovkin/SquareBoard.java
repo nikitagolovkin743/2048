@@ -1,6 +1,9 @@
 package com.golovkin;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class SquareBoard<V> extends Board<Key, V> {
@@ -12,18 +15,15 @@ public class SquareBoard<V> extends Board<Key, V> {
     public void fillBoard(List<V> list) {
         int size = getWidth();
 
-        if (list.size() != size * size)
-        {
+        if (list.size() != size * size) {
             throw new RuntimeException("Ошибка инициализации приложения");
         }
 
         board.clear();
 
         int counter = 0;
-        for (int i = 0; i < size; i++)
-        {
-            for (int j = 0; j < size; j++)
-            {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 Key key = new Key(i, j);
                 V value = list.get(counter);
                 board.put(key, value);
@@ -82,8 +82,7 @@ public class SquareBoard<V> extends Board<Key, V> {
     public List<V> getValues(List<Key> keys) {
         List<V> values = new ArrayList<>();
 
-        for (Key key : keys)
-        {
+        for (Key key : keys) {
             values.add(board.get(key));
         }
 

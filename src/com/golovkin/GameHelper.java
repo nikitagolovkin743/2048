@@ -7,21 +7,11 @@ import java.util.List;
 public class GameHelper {
     private static Comparator<Integer> nullsLastComparator;
 
-    public GameHelper()
-    {
+    public GameHelper() {
         nullsLastComparator = Comparator.nullsLast(null);
     }
 
-    public List<Integer> moveAndMergeEqual(List<Integer> list) {
-        moveElementsToBeginning(list);
-        List<Integer> dest = getMergedElements(list);
-        ensureEqualSize(list, dest);
-
-        return dest;
-    }
-
-    private static void moveElementsToBeginning(List<Integer> list)
-    {
+    private static void moveElementsToBeginning(List<Integer> list) {
         list.sort(nullsLastComparator);
     }
 
@@ -30,13 +20,11 @@ public class GameHelper {
 
         int size = getElementCount(source);
 
-        for (int i = 0; i < size; i++)
-        {
+        for (int i = 0; i < size; i++) {
             if (i != source.size() - 1 && source.get(i).equals(source.get(i + 1))) {
                 dest.add(source.get(i) * 2);
                 i += 1;
-            }
-            else {
+            } else {
                 dest.add(source.get(i));
             }
         }
@@ -45,19 +33,24 @@ public class GameHelper {
     }
 
     private static int getElementCount(List<Integer> source) {
-        if (source.contains(null))
-        {
+        if (source.contains(null)) {
             return source.indexOf(null);
-        }
-        else {
+        } else {
             return source.size();
         }
     }
 
     private static void ensureEqualSize(List<Integer> source, List<Integer> dest) {
-        while (dest.size() != source.size())
-        {
+        while (dest.size() != source.size()) {
             dest.add(null);
         }
+    }
+
+    public List<Integer> moveAndMergeEqual(List<Integer> list) {
+        moveElementsToBeginning(list);
+        List<Integer> dest = getMergedElements(list);
+        ensureEqualSize(list, dest);
+
+        return dest;
     }
 }

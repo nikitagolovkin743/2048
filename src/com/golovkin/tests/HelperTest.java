@@ -3,7 +3,7 @@ package com.golovkin.tests;
 import com.golovkin.GameHelper;
 
 import static com.golovkin.tests.BoardTest.assertEquals;
-import static java.util.Arrays.*;
+import static java.util.Arrays.asList;
 
 public class HelperTest {
     private final static GameHelper helper = new GameHelper();

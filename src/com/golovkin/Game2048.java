@@ -25,8 +25,7 @@ public class Game2048 implements Game {
         try {
             addItem();
             addItem();
-        }
-        catch (GameOverException e) {
+        } catch (GameOverException e) {
             throw new RuntimeException("Ошибка инициализации приложения");
         }
     }
@@ -120,8 +119,7 @@ public class Game2048 implements Game {
     public void addItem() throws GameOverException {
         List<Key> availableSpace = board.availableSpace();
 
-        if (availableSpace.size() == 0)
-        {
+        if (availableSpace.size() == 0) {
             throw new GameOverException();
         }
 
